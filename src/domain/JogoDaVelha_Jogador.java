@@ -12,8 +12,8 @@ public class JogoDaVelha_Jogador {
     }
 
     public boolean joga(Scanner teclado) {
-        mapa.limpaMapa(); //temp
         boolean movimentoValido = false;
+        System.out.println("Jogador ..");
         do {
             int numeroLinha = 0;
             int numeroColuna = 0;
@@ -48,9 +48,12 @@ public class JogoDaVelha_Jogador {
             } while (!colunaValida);
 
             movimentoValido = mapa.jogar(numeroLinha, numeroColuna, letra);
-        } while (!movimentoValido);
+        } while (movimentoValido == false);
 
-        mapa.desenha(2);
-        return true;   
+        if (mapa.ganhou(letra)) {
+            System.out.println(" ... Jogador GANHOU!");
+            return true;
+        }
+        return false;   
     }
 }
